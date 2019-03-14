@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 Mar, 2019 4:21:21 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="tpch" name="com.gigaspaces.pojos.Orders" optimistic-lock="version" table="ORDERS">
+    <id name="OOrderkey" type="int">
+      <column name="O_ORDERKEY"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.gigaspaces.pojos.Customer" fetch="select" name="customer">
+      <column name="O_CUSTKEY" not-null="true"/>
+    </many-to-one>
+    <property name="OOrderstatus" type="char">
+      <column length="1" name="O_ORDERSTATUS" not-null="true"/>
+    </property>
+    <property name="OTotalprice" type="big_decimal">
+      <column name="O_TOTALPRICE" not-null="true" precision="15"/>
+    </property>
+    <property name="OOrderdate" type="date">
+      <column length="10" name="O_ORDERDATE" not-null="true"/>
+    </property>
+    <property name="OOrderpriority" type="string">
+      <column length="15" name="O_ORDERPRIORITY" not-null="true"/>
+    </property>
+    <property name="OClerk" type="string">
+      <column length="15" name="O_CLERK" not-null="true"/>
+    </property>
+    <property name="OShippriority" type="int">
+      <column name="O_SHIPPRIORITY" not-null="true"/>
+    </property>
+    <property name="OComment" type="string">
+      <column length="79" name="O_COMMENT" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="lineitems" table="LINEITEM">
+      <key>
+        <column name="L_ORDERKEY" not-null="true"/>
+      </key>
+      <one-to-many class="com.gigaspaces.pojos.Lineitem"/>
+    </set>
+  </class>
+</hibernate-mapping>

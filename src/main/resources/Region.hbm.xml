@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 Mar, 2019 4:21:21 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="tpch" name="com.gigaspaces.pojos.Region" optimistic-lock="version" table="REGION">
+    <id name="RRegionkey" type="int">
+      <column name="R_REGIONKEY"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="RName" type="string">
+      <column length="25" name="R_NAME" not-null="true"/>
+    </property>
+    <property name="RComment" type="string">
+      <column length="152" name="R_COMMENT"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="nations" table="NATION">
+      <key>
+        <column name="N_REGIONKEY" not-null="true"/>
+      </key>
+      <one-to-many class="com.gigaspaces.pojos.Nation"/>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 Mar, 2019 4:21:21 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="tpch" name="com.gigaspaces.pojos.Lineitem" optimistic-lock="version" table="LINEITEM">
+    <composite-id class="com.gigaspaces.pojos.LineitemId" name="id">
+      <key-property name="LOrderkey" type="int">
+        <column name="L_ORDERKEY"/>
+      </key-property>
+      <key-property name="LLinenumber" type="int">
+        <column name="L_LINENUMBER"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.gigaspaces.pojos.Orders" fetch="select" insert="false" name="orders" update="false">
+      <column name="L_ORDERKEY" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.gigaspaces.pojos.Partsupp" fetch="select" name="partsupp">
+      <column name="L_PARTKEY" not-null="true"/>
+      <column name="L_SUPPKEY" not-null="true"/>
+    </many-to-one>
+    <property name="LQuantity" type="big_decimal">
+      <column name="L_QUANTITY" not-null="true" precision="15"/>
+    </property>
+    <property name="LExtendedprice" type="big_decimal">
+      <column name="L_EXTENDEDPRICE" not-null="true" precision="15"/>
+    </property>
+    <property name="LDiscount" type="big_decimal">
+      <column name="L_DISCOUNT" not-null="true" precision="15"/>
+    </property>
+    <property name="LTax" type="big_decimal">
+      <column name="L_TAX" not-null="true" precision="15"/>
+    </property>
+    <property name="LReturnflag" type="char">
+      <column length="1" name="L_RETURNFLAG" not-null="true"/>
+    </property>
+    <property name="LLinestatus" type="char">
+      <column length="1" name="L_LINESTATUS" not-null="true"/>
+    </property>
+    <property name="LShipdate" type="date">
+      <column length="10" name="L_SHIPDATE" not-null="true"/>
+    </property>
+    <property name="LCommitdate" type="date">
+      <column length="10" name="L_COMMITDATE" not-null="true"/>
+    </property>
+    <property name="LReceiptdate" type="date">
+      <column length="10" name="L_RECEIPTDATE" not-null="true"/>
+    </property>
+    <property name="LShipinstruct" type="string">
+      <column length="25" name="L_SHIPINSTRUCT" not-null="true"/>
+    </property>
+    <property name="LShipmode" type="string">
+      <column length="10" name="L_SHIPMODE" not-null="true"/>
+    </property>
+    <property name="LComment" type="string">
+      <column length="44" name="L_COMMENT" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

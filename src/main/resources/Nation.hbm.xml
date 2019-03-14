@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 Mar, 2019 4:21:21 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="tpch" name="com.gigaspaces.pojos.Nation" optimistic-lock="version" table="NATION">
+    <id name="NNationkey" type="int">
+      <column name="N_NATIONKEY"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.gigaspaces.pojos.Region" fetch="select" name="region">
+      <column name="N_REGIONKEY" not-null="true"/>
+    </many-to-one>
+    <property name="NName" type="string">
+      <column length="25" name="N_NAME" not-null="true"/>
+    </property>
+    <property name="NComment" type="string">
+      <column length="152" name="N_COMMENT"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="suppliers" table="SUPPLIER">
+      <key>
+        <column name="S_NATIONKEY" not-null="true"/>
+      </key>
+      <one-to-many class="com.gigaspaces.pojos.Supplier"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="customers" table="CUSTOMER">
+      <key>
+        <column name="C_NATIONKEY" not-null="true"/>
+      </key>
+      <one-to-many class="com.gigaspaces.pojos.Customer"/>
+    </set>
+  </class>
+</hibernate-mapping>
