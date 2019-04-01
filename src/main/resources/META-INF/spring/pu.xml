@@ -50,12 +50,13 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.show_sql">false</prop>
-
                 <prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
                 <prop key="hibernate.cache.use_second_level_cache">false</prop>
                 <prop key="hibernate.cache.use_query_cache">false</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.jdbc.batch_size">1000</prop>
+                <prop key="javax.persistence.validation.mode">none</prop>
+
             </props>
         </property>
     </bean>
@@ -63,11 +64,9 @@
     <bean id="hibernateSpaceDataSource" class="org.openspaces.persistency.hibernate.DefaultHibernateSpaceDataSourceFactoryBean">
         <property name="sessionFactory" ref="sessionFactory"/>
         <property name="fetchSize" value="1000"/>
-        <property name="performOrderById" value="true"/>
         <property name="initialLoadThreadPoolSize" value="48"/>
         <property name="initialLoadChunkSize" value="2000000"/>
         <property name="useScrollableResultSet" value="false"/>
-        <property name="augmentInitialLoadEntries" value="false"/>
         <property name="initialLoadEntries">
             <list>
                 <value>com.gigaspaces.pojos.Customer</value>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 13 Mar, 2019 4:21:21 PM by Hibernate Tools 4.3.1 -->
-<hibernate-mapping>
+<hibernate-mapping default-lazy="false">
   <class catalog="tpch" name="com.gigaspaces.pojos.Partsupp" optimistic-lock="version" table="PARTSUPP">
-    <composite-id class="com.gigaspaces.pojos.PartsuppId" name="id">
+    <composite-id>
       <key-property name="psPartkey" type="int">
         <column name="PS_PARTKEY"/>
       </key-property>
@@ -11,27 +11,14 @@
         <column name="PS_SUPPKEY"/>
       </key-property>
     </composite-id>
-    <many-to-one class="com.gigaspaces.pojos.Part" fetch="select" insert="false" name="part" update="false">
-      <column name="PS_PARTKEY" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="com.gigaspaces.pojos.Supplier" fetch="select" insert="false" name="supplier" update="false">
-      <column name="PS_SUPPKEY" not-null="true"/>
-    </many-to-one>
     <property name="psAvailqty" type="int">
       <column name="PS_AVAILQTY" not-null="true"/>
     </property>
-    <property name="psSupplycost" type="big_decimal">
+    <property name="psSupplycost" type="double">
       <column name="PS_SUPPLYCOST" not-null="true" precision="15"/>
     </property>
     <property name="psComment" type="string">
       <column length="199" name="PS_COMMENT" not-null="true"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="lineitems" table="LINEITEM">
-      <key>
-        <column name="L_PARTKEY" not-null="true"/>
-        <column name="L_SUPPKEY" not-null="true"/>
-      </key>
-      <one-to-many class="com.gigaspaces.pojos.Lineitem"/>
-    </set>
   </class>
 </hibernate-mapping>

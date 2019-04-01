@@ -1,167 +1,193 @@
 package com.gigaspaces.pojos;
-// Generated 13 Mar, 2019 4:21:19 PM by Hibernate Tools 4.3.1
 
 
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
 
-import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @author Nihar_Kapadia
  * Date: 13.03.2019
  */
 @SpaceClass
-public class Lineitem  implements java.io.Serializable {
+public class Lineitem implements java.io.Serializable {
 
 
-     private LineitemId id;
-     private Orders orders;
-     private Partsupp partsupp;
-     private BigDecimal LQuantity;
-     private BigDecimal LExtendedprice;
-     private BigDecimal LDiscount;
-     private BigDecimal LTax;
-     private char LReturnflag;
-     private char LLinestatus;
-     private Date LShipdate;
-     private Date LCommitdate;
-     private Date LReceiptdate;
-     private String LShipinstruct;
-     private String LShipmode;
-     private String LComment;
+    private String id;
+    private int LOrderkey;
+    private int LLinenumber;
+    private int LPartkey;
+    private int LSuppkey;
+    private Double LQuantity;
+    private Double LExtendedprice;
+    private Double LDiscount;
+    private Double LTax;
+    private Character LReturnflag;
+    private Character LLinestatus;
+    private Date LShipdate;
+    private Date LCommitdate;
+    private Date LReceiptdate;
+    private String LShipinstruct;
+    private String LShipmode;
+    private String LComment;
 
     public Lineitem() {
     }
 
-    public Lineitem(LineitemId id, Orders orders, Partsupp partsupp, BigDecimal LQuantity, BigDecimal LExtendedprice, BigDecimal LDiscount, BigDecimal LTax, char LReturnflag, char LLinestatus, Date LShipdate, Date LCommitdate, Date LReceiptdate, String LShipinstruct, String LShipmode, String LComment) {
-       this.id = id;
-       this.orders = orders;
-       this.partsupp = partsupp;
-       this.LQuantity = LQuantity;
-       this.LExtendedprice = LExtendedprice;
-       this.LDiscount = LDiscount;
-       this.LTax = LTax;
-       this.LReturnflag = LReturnflag;
-       this.LLinestatus = LLinestatus;
-       this.LShipdate = LShipdate;
-       this.LCommitdate = LCommitdate;
-       this.LReceiptdate = LReceiptdate;
-       this.LShipinstruct = LShipinstruct;
-       this.LShipmode = LShipmode;
-       this.LComment = LComment;
+    public Lineitem(String id,int LOrderkey,int LLinenumber, int LPartkey, int LSuppkey, Double LQuantity, Double LExtendedprice, Double LDiscount, Double LTax, char LReturnflag, char LLinestatus, Date LShipdate, Date LCommitdate, Date LReceiptdate, String LShipinstruct, String LShipmode, String LComment) {
+        this.id = id;
+        this.LOrderkey = LOrderkey;
+        this.LLinenumber = LLinenumber;
+        this.LPartkey = LPartkey;
+        this.LSuppkey = LSuppkey;
+        this.LQuantity = LQuantity;
+        this.LExtendedprice = LExtendedprice;
+        this.LDiscount = LDiscount;
+        this.LTax = LTax;
+        this.LReturnflag = LReturnflag;
+        this.LLinestatus = LLinestatus;
+        this.LShipdate = LShipdate;
+        this.LCommitdate = LCommitdate;
+        this.LReceiptdate = LReceiptdate;
+        this.LShipinstruct = LShipinstruct;
+        this.LShipmode = LShipmode;
+        this.LComment = LComment;
     }
-    @SpaceId
-    public LineitemId getId() {
-        return this.id;
+    @SpaceId(autoGenerate = false)
+    public String getId() {
+        return getLOrderkey()+"_"+getLLinenumber();
     }
-    
-    public void setId(LineitemId id) {
+
+    public void setId(String id) {
         this.id = id;
     }
-    public Orders getOrders() {
-        return this.orders;
+
+    public int getLOrderkey() {
+        return this.LOrderkey;
     }
-    
-    public void setOrders(Orders orders) {
-        this.orders = orders;
+
+    public void setLOrderkey(int LOrderkey) {
+        this.LOrderkey = LOrderkey;
     }
-    public Partsupp getPartsupp() {
-        return this.partsupp;
+
+    public int getLLinenumber() {
+        return this.LLinenumber;
     }
-    
-    public void setPartsupp(Partsupp partsupp) {
-        this.partsupp = partsupp;
+
+    public void setLLinenumber(int LLinenumber) {
+        this.LLinenumber = LLinenumber;
     }
-    public BigDecimal getLQuantity() {
-        return this.LQuantity;
-    }
-    
-    public void setLQuantity(BigDecimal LQuantity) {
+
+    public Double getLQuantity() {return this.LQuantity; }
+
+    public void setLQuantity(Double LQuantity) {
         this.LQuantity = LQuantity;
     }
-    public BigDecimal getLExtendedprice() {
+
+    public Double getLExtendedprice() {
         return this.LExtendedprice;
     }
-    
-    public void setLExtendedprice(BigDecimal LExtendedprice) {
+
+    public void setLExtendedprice(Double LExtendedprice) {
         this.LExtendedprice = LExtendedprice;
     }
-    public BigDecimal getLDiscount() {
+
+    public Double getLDiscount() {
         return this.LDiscount;
     }
-    
-    public void setLDiscount(BigDecimal LDiscount) {
+
+    public void setLDiscount(Double LDiscount) {
         this.LDiscount = LDiscount;
     }
-    public BigDecimal getLTax() {
+
+    public Double getLTax() {
         return this.LTax;
     }
-    
-    public void setLTax(BigDecimal LTax) {
+
+    public void setLTax(Double LTax) {
         this.LTax = LTax;
     }
-    public char getLReturnflag() {
+
+    public Character getLReturnflag() {
         return this.LReturnflag;
     }
-    
-    public void setLReturnflag(char LReturnflag) {
+
+    public void setLReturnflag(Character LReturnflag) {
         this.LReturnflag = LReturnflag;
     }
-    public char getLLinestatus() {
+
+    public Character getLLinestatus() {
         return this.LLinestatus;
     }
-    
-    public void setLLinestatus(char LLinestatus) {
+
+    public void setLLinestatus(Character LLinestatus) {
         this.LLinestatus = LLinestatus;
     }
+
     public Date getLShipdate() {
         return this.LShipdate;
     }
-    
+
     public void setLShipdate(Date LShipdate) {
         this.LShipdate = LShipdate;
     }
+
     public Date getLCommitdate() {
         return this.LCommitdate;
     }
-    
+
     public void setLCommitdate(Date LCommitdate) {
         this.LCommitdate = LCommitdate;
     }
+
     public Date getLReceiptdate() {
         return this.LReceiptdate;
     }
-    
+
     public void setLReceiptdate(Date LReceiptdate) {
         this.LReceiptdate = LReceiptdate;
     }
+
     public String getLShipinstruct() {
         return this.LShipinstruct;
     }
-    
+
     public void setLShipinstruct(String LShipinstruct) {
         this.LShipinstruct = LShipinstruct;
     }
+
     public String getLShipmode() {
         return this.LShipmode;
     }
-    
+
     public void setLShipmode(String LShipmode) {
         this.LShipmode = LShipmode;
     }
+
     public String getLComment() {
         return this.LComment;
     }
-    
+
     public void setLComment(String LComment) {
         this.LComment = LComment;
     }
 
+    public int getLPartkey() {
+        return LPartkey;
+    }
 
+    public void setLPartkey(int LPartkey) {
+        this.LPartkey = LPartkey;
+    }
 
+    public int getLSuppkey() {
+        return LSuppkey;
+    }
 
+    public void setLSuppkey(int LSuppkey) {
+        this.LSuppkey = LSuppkey;
+    }
 }
 
 

@@ -17,28 +17,24 @@ public class Nation  implements java.io.Serializable {
 
 
      private int NNationkey;
-     private Region region;
+     private int NRegionkey;
      private String NName;
      private String NComment;
-     private Set suppliers = new HashSet(0);
-     private Set customers = new HashSet(0);
 
     public Nation() {
     }
 
 	
-    public Nation(int NNationkey, Region region, String NName) {
+    public Nation(int NNationkey, int NRegionkey, String NName) {
         this.NNationkey = NNationkey;
-        this.region = region;
+        this.NRegionkey = NRegionkey;
         this.NName = NName;
     }
-    public Nation(int NNationkey, Region region, String NName, String NComment, Set suppliers, Set customers) {
+    public Nation(int NNationkey, int NRegionkey, String NName, String NComment) {
        this.NNationkey = NNationkey;
-       this.region = region;
+       this.NRegionkey = NRegionkey;
        this.NName = NName;
        this.NComment = NComment;
-       this.suppliers = suppliers;
-       this.customers = customers;
     }
     @SpaceId
     public int getNNationkey() {
@@ -48,12 +44,12 @@ public class Nation  implements java.io.Serializable {
     public void setNNationkey(int NNationkey) {
         this.NNationkey = NNationkey;
     }
-    public Region getRegion() {
-        return this.region;
+    public int getNRegionkey() {
+        return this.NRegionkey;
     }
     
-    public void setRegion(Region region) {
-        this.region = region;
+    public void setNRegionkey(int NRegionkey) {
+        this.NRegionkey = NRegionkey;
     }
     public String getNName() {
         return this.NName;
@@ -65,28 +61,10 @@ public class Nation  implements java.io.Serializable {
     public String getNComment() {
         return this.NComment;
     }
-    
+
     public void setNComment(String NComment) {
         this.NComment = NComment;
     }
-    public Set getSuppliers() {
-        return this.suppliers;
-    }
-    
-    public void setSuppliers(Set suppliers) {
-        this.suppliers = suppliers;
-    }
-    public Set getCustomers() {
-        return this.customers;
-    }
-    
-    public void setCustomers(Set customers) {
-        this.customers = customers;
-    }
-
-
-
-
 }
 
 

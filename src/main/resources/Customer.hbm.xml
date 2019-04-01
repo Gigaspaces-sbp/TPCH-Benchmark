@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13 Mar, 2019 4:21:21 PM by Hibernate Tools 4.3.1 -->
-<hibernate-mapping>
+<hibernate-mapping default-lazy="false">
   <class catalog="tpch" name="com.gigaspaces.pojos.Customer" optimistic-lock="version" table="CUSTOMER">
     <id name="CCustkey" type="int">
       <column name="C_CUSTKEY"/>
       <generator class="assigned"/>
     </id>
-    <many-to-one class="com.gigaspaces.pojos.Nation" fetch="select" name="nation">
+    <property name="CNationkey" type="int">
       <column name="C_NATIONKEY" not-null="true"/>
-    </many-to-one>
+    </property>
     <property name="CName" type="string">
       <column length="25" name="C_NAME" not-null="true"/>
     </property>
@@ -19,7 +18,7 @@
     <property name="CPhone" type="string">
       <column length="15" name="C_PHONE" not-null="true"/>
     </property>
-    <property name="CAcctbal" type="big_decimal">
+    <property name="CAcctbal" type="double">
       <column name="C_ACCTBAL" not-null="true" precision="15"/>
     </property>
     <property name="CMktsegment" type="string">
@@ -28,11 +27,5 @@
     <property name="CComment" type="string">
       <column length="117" name="C_COMMENT" not-null="true"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="orderses" table="ORDERS">
-      <key>
-        <column name="O_CUSTKEY" not-null="true"/>
-      </key>
-      <one-to-many class="com.gigaspaces.pojos.Orders"/>
-    </set>
   </class>
 </hibernate-mapping>

@@ -4,10 +4,7 @@ package com.gigaspaces.pojos;
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.sql.Date;
 
 /**
  * @author Nihar_Kapadia
@@ -18,23 +15,22 @@ public class Orders  implements java.io.Serializable {
 
 
      private int OOrderkey;
-     private Customer customer;
+     private int OCustkey;
      private char OOrderstatus;
-     private BigDecimal OTotalprice;
+     private Double OTotalprice;
      private Date OOrderdate;
      private String OOrderpriority;
      private String OClerk;
      private int OShippriority;
      private String OComment;
-     private Set lineitems = new HashSet(0);
 
     public Orders() {
     }
 
-	
-    public Orders(int OOrderkey, Customer customer, char OOrderstatus, BigDecimal OTotalprice, Date OOrderdate, String OOrderpriority, String OClerk, int OShippriority, String OComment) {
+
+    public Orders(int OOrderkey, int OCustkey, char OOrderstatus, Double OTotalprice, Date OOrderdate, String OOrderpriority, String OClerk, int OShippriority, String OComment) {
         this.OOrderkey = OOrderkey;
-        this.customer = customer;
+        this.OCustkey = OCustkey;
         this.OOrderstatus = OOrderstatus;
         this.OTotalprice = OTotalprice;
         this.OOrderdate = OOrderdate;
@@ -43,45 +39,33 @@ public class Orders  implements java.io.Serializable {
         this.OShippriority = OShippriority;
         this.OComment = OComment;
     }
-    public Orders(int OOrderkey, Customer customer, char OOrderstatus, BigDecimal OTotalprice, Date OOrderdate, String OOrderpriority, String OClerk, int OShippriority, String OComment, Set lineitems) {
-       this.OOrderkey = OOrderkey;
-       this.customer = customer;
-       this.OOrderstatus = OOrderstatus;
-       this.OTotalprice = OTotalprice;
-       this.OOrderdate = OOrderdate;
-       this.OOrderpriority = OOrderpriority;
-       this.OClerk = OClerk;
-       this.OShippriority = OShippriority;
-       this.OComment = OComment;
-       this.lineitems = lineitems;
-    }
     @SpaceId
     public int getOOrderkey() {
         return this.OOrderkey;
     }
-    
+
     public void setOOrderkey(int OOrderkey) {
         this.OOrderkey = OOrderkey;
     }
-    public Customer getCustomer() {
-        return this.customer;
+    public int getOCustkey() {
+        return this.OCustkey;
     }
-    
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+
+    public void setOCustkey(int OCustkey) {
+        this.OCustkey = OCustkey;
     }
     public char getOOrderstatus() {
         return this.OOrderstatus;
     }
-    
+
     public void setOOrderstatus(char OOrderstatus) {
         this.OOrderstatus = OOrderstatus;
     }
-    public BigDecimal getOTotalprice() {
+    public Double getOTotalprice() {
         return this.OTotalprice;
     }
-    
-    public void setOTotalprice(BigDecimal OTotalprice) {
+
+    public void setOTotalprice(Double OTotalprice) {
         this.OTotalprice = OTotalprice;
     }
     public Date getOOrderdate() {
@@ -119,16 +103,6 @@ public class Orders  implements java.io.Serializable {
     public void setOComment(String OComment) {
         this.OComment = OComment;
     }
-    public Set getLineitems() {
-        return this.lineitems;
-    }
-    
-    public void setLineitems(Set lineitems) {
-        this.lineitems = lineitems;
-    }
-
-
-
 
 }
 

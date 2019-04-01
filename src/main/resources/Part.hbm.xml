@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 13 Mar, 2019 4:21:21 PM by Hibernate Tools 4.3.1 -->
-<hibernate-mapping>
+<hibernate-mapping default-lazy="false">
   <class catalog="tpch" name="com.gigaspaces.pojos.Part" optimistic-lock="version" table="PART">
     <id name="PPartkey" type="int">
       <column name="P_PARTKEY"/>
@@ -25,17 +25,11 @@
     <property name="PContainer" type="string">
       <column length="10" name="P_CONTAINER" not-null="true"/>
     </property>
-    <property name="PRetailprice" type="big_decimal">
+    <property name="PRetailprice" type="double">
       <column name="P_RETAILPRICE" not-null="true" precision="15"/>
     </property>
     <property name="PComment" type="string">
       <column length="23" name="P_COMMENT" not-null="true"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="partsupps" table="PARTSUPP">
-      <key>
-        <column name="PS_PARTKEY" not-null="true"/>
-      </key>
-      <one-to-many class="com.gigaspaces.pojos.Partsupp"/>
-    </set>
   </class>
 </hibernate-mapping>

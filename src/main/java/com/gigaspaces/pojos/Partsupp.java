@@ -4,10 +4,6 @@ package com.gigaspaces.pojos;
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
 
-import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * @author Nihar_Kapadia
  * Date: 13.03.2019
@@ -16,69 +12,63 @@ import java.util.Set;
 public class Partsupp  implements java.io.Serializable {
 
 
-     private PartsuppId id;
-     private Part part;
-     private Supplier supplier;
-     private int psAvailqty;
-     private BigDecimal psSupplycost;
-     private String psComment;
-     private Set lineitems = new HashSet(0);
+    private String id;
+    private int psPartkey;
+    private int psSuppkey;
+    private int psAvailqty;
+    private Double psSupplycost;
+    private String psComment;
 
     public Partsupp() {
     }
 
-	
-    public Partsupp(PartsuppId id, Part part, Supplier supplier, int psAvailqty, BigDecimal psSupplycost, String psComment) {
-        this.id = id;
-        this.part = part;
-        this.supplier = supplier;
+
+    public Partsupp(String id,int psPartkey, int psSuppkey, int psAvailqty, Double psSupplycost, String psComment) {
+        this.id=id;
+        this.psPartkey = psPartkey;
+        this.psSuppkey = psSuppkey;
         this.psAvailqty = psAvailqty;
         this.psSupplycost = psSupplycost;
         this.psComment = psComment;
     }
-    public Partsupp(PartsuppId id, Part part, Supplier supplier, int psAvailqty, BigDecimal psSupplycost, String psComment, Set lineitems) {
-       this.id = id;
-       this.part = part;
-       this.supplier = supplier;
-       this.psAvailqty = psAvailqty;
-       this.psSupplycost = psSupplycost;
-       this.psComment = psComment;
-       this.lineitems = lineitems;
+    @SpaceId(autoGenerate = true)
+    public String getId() {
+        return getPsPartkey()+"_"+getPsSuppkey();
     }
-    @SpaceId
-    public PartsuppId getId() {
-        return this.id;
-    }
-    
-    public void setId(PartsuppId id) {
+
+    public void setId(String id) {
         this.id = id;
     }
-    public Part getPart() {
-        return this.part;
+
+
+    public int getPsPartkey() {
+        return this.psPartkey;
     }
-    
-    public void setPart(Part part) {
-        this.part = part;
+
+    public void setPsPartkey(int psPartkey) {
+        this.psPartkey = psPartkey;
     }
-    public Supplier getSupplier() {
-        return this.supplier;
+
+    public int getPsSuppkey() {
+        return this.psSuppkey;
     }
-    
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+
+    public void setPsSuppkey(int psSuppkey) {
+        this.psSuppkey = psSuppkey;
     }
+
     public int getPsAvailqty() {
         return this.psAvailqty;
     }
-    
+
     public void setPsAvailqty(int psAvailqty) {
         this.psAvailqty = psAvailqty;
     }
-    public BigDecimal getPsSupplycost() {
+    public Double getPsSupplycost() {
         return this.psSupplycost;
     }
-    
-    public void setPsSupplycost(BigDecimal psSupplycost) {
+
+    public void setPsSupplycost(Double psSupplycost) {
         this.psSupplycost = psSupplycost;
     }
     public String getPsComment() {
@@ -88,16 +78,6 @@ public class Partsupp  implements java.io.Serializable {
     public void setPsComment(String psComment) {
         this.psComment = psComment;
     }
-    public Set getLineitems() {
-        return this.lineitems;
-    }
-    
-    public void setLineitems(Set lineitems) {
-        this.lineitems = lineitems;
-    }
-
-
-
 
 }
 

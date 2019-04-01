@@ -4,10 +4,6 @@ package com.gigaspaces.pojos;
 import com.gigaspaces.annotation.pojo.SpaceClass;
 import com.gigaspaces.annotation.pojo.SpaceId;
 
-import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * @author Nihar_Kapadia
  * Date: 13.03.2019
@@ -17,22 +13,21 @@ public class Customer  implements java.io.Serializable {
 
 
      private int CCustkey;
-     private Nation nation;
+     private int CNationkey;
      private String CName;
      private String CAddress;
      private String CPhone;
-     private BigDecimal CAcctbal;
+     private Double CAcctbal;
      private String CMktsegment;
      private String CComment;
-     private Set orderses = new HashSet(0);
 
     public Customer() {
     }
 
 	
-    public Customer(int CCustkey, Nation nation, String CName, String CAddress, String CPhone, BigDecimal CAcctbal, String CMktsegment, String CComment) {
+    public Customer(int CCustkey, int CNationkey, String CName, String CAddress, String CPhone, Double CAcctbal, String CMktsegment, String CComment) {
         this.CCustkey = CCustkey;
-        this.nation = nation;
+        this.CNationkey = CNationkey;
         this.CName = CName;
         this.CAddress = CAddress;
         this.CPhone = CPhone;
@@ -40,17 +35,7 @@ public class Customer  implements java.io.Serializable {
         this.CMktsegment = CMktsegment;
         this.CComment = CComment;
     }
-    public Customer(int CCustkey, Nation nation, String CName, String CAddress, String CPhone, BigDecimal CAcctbal, String CMktsegment, String CComment, Set orderses) {
-       this.CCustkey = CCustkey;
-       this.nation = nation;
-       this.CName = CName;
-       this.CAddress = CAddress;
-       this.CPhone = CPhone;
-       this.CAcctbal = CAcctbal;
-       this.CMktsegment = CMktsegment;
-       this.CComment = CComment;
-       this.orderses = orderses;
-    }
+
     @SpaceId
     public int getCCustkey() {
         return this.CCustkey;
@@ -59,12 +44,12 @@ public class Customer  implements java.io.Serializable {
     public void setCCustkey(int CCustkey) {
         this.CCustkey = CCustkey;
     }
-    public Nation getNation() {
-        return this.nation;
+    public int getCNationkey() {
+        return this.CNationkey;
     }
     
-    public void setNation(Nation nation) {
-        this.nation = nation;
+    public void setCNationkey(int CNationkey) {
+        this.CNationkey = CNationkey;
     }
     public String getCName() {
         return this.CName;
@@ -87,11 +72,11 @@ public class Customer  implements java.io.Serializable {
     public void setCPhone(String CPhone) {
         this.CPhone = CPhone;
     }
-    public BigDecimal getCAcctbal() {
+    public Double getCAcctbal() {
         return this.CAcctbal;
     }
     
-    public void setCAcctbal(BigDecimal CAcctbal) {
+    public void setCAcctbal(Double CAcctbal) {
         this.CAcctbal = CAcctbal;
     }
     public String getCMktsegment() {
@@ -108,17 +93,6 @@ public class Customer  implements java.io.Serializable {
     public void setCComment(String CComment) {
         this.CComment = CComment;
     }
-    public Set getOrderses() {
-        return this.orderses;
-    }
-    
-    public void setOrderses(Set orderses) {
-        this.orderses = orderses;
-    }
-
-
-
-
 }
 
 

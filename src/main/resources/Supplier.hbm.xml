@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 13 Mar, 2019 4:21:21 PM by Hibernate Tools 4.3.1 -->
-<hibernate-mapping>
+<hibernate-mapping default-lazy="false">
   <class catalog="tpch" name="com.gigaspaces.pojos.Supplier" optimistic-lock="version" table="SUPPLIER">
     <id name="SSuppkey" type="int">
       <column name="S_SUPPKEY"/>
       <generator class="assigned"/>
     </id>
-    <many-to-one class="com.gigaspaces.pojos.Nation" fetch="select" name="nation">
+    <property name="SNationkey" type="int">
       <column name="S_NATIONKEY" not-null="true"/>
-    </many-to-one>
+    </property>
     <property name="SName" type="string">
       <column length="25" name="S_NAME" not-null="true"/>
     </property>
@@ -19,17 +19,11 @@
     <property name="SPhone" type="string">
       <column length="15" name="S_PHONE" not-null="true"/>
     </property>
-    <property name="SAcctbal" type="big_decimal">
+    <property name="SAcctbal" type="double">
       <column name="S_ACCTBAL" not-null="true" precision="15"/>
     </property>
     <property name="SComment" type="string">
       <column length="101" name="S_COMMENT" not-null="true"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="partsupps" table="PARTSUPP">
-      <key>
-        <column name="PS_SUPPKEY" not-null="true"/>
-      </key>
-      <one-to-many class="com.gigaspaces.pojos.Partsupp"/>
-    </set>
   </class>
 </hibernate-mapping>
